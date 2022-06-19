@@ -133,6 +133,7 @@ input[type="number"]:focus  {
   align-self: center;
   display: flex;
   transition: 0.3s;
+  padding-right: 0.6rem;
 }
 
 .checkbox {

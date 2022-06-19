@@ -18,6 +18,8 @@ function App() {
     // initialize our stateful variables
     const [nameInput, setNameInput] = useState([]);
     const [billInput, setBillInput] = useState(null);
+    const [checked, setChecked] = useState(false);
+
 
     const handleNameInputChange = (event) => {
         // grab the contents of the box
@@ -33,6 +35,13 @@ function App() {
         console.log(event.target.value);
     }
 
+    const handleCheckboxChange = (event) => {
+        // console.log(event);
+        setChecked(false);
+        console.log(event.target.checked);
+        setChecked(event.target.checked);
+    }
+
 
     // create an event listener that will handle the user clicking 'Next'
     const handleSubmit = (event) => {
@@ -46,6 +55,7 @@ function App() {
         push(dbRef, billInput);
         // clear the input (reset the state of userInput to an empty string)
         setNameInput('');
+        setBillInput(null);
     }
 
 
@@ -59,13 +69,14 @@ function App() {
                         <div className="nameContainer">
                             <div className="titleText">
                                 <h2>Who's eating tonight?</h2>
-                                <h2>Who paid?</h2>
+                                <h2>Paid?</h2>
                             </div>
                             <div className="nameInputContainer">
                                 <div className="singleNameInput">
                                     <label className='sr-only' htmlFor="nameOne">Name</label>
                                     <input 
                                         type="text" 
+                                        id='nameOne'
                                         name='nameOne' 
                                         placeholder='Name' 
                                         onChange={handleNameInputChange} 
@@ -73,7 +84,16 @@ function App() {
                                     />
                                     <span className='checkboxContainer'>
                                         <label className='checkbox' htmlFor="nameOneCheckbox">
-                                            <input className='checkboxInput' type="checkbox" name='nameOneCheckbox' id='nameOneCheckbox'/>
+                                            <input 
+                                                className='checkboxInput' 
+                                                type="checkbox" 
+                                                //Change name below to match one in input to pass checked value to firebase
+                                                name='nameOneCheckbox' 
+                                                id='nameOneCheckbox' 
+                                                // Need to change this checked prop as I cant use same state for name one and two
+                                                checked={checked}
+                                                onChange={handleCheckboxChange} 
+                                            />
                                             <span className="checkmark"></span>
                                         </label>
                                     </span>
@@ -82,6 +102,7 @@ function App() {
                                     <label className='sr-only' htmlFor="nameTwo">Name</label>
                                     <input 
                                         type="text" 
+                                        id='nameTwo'
                                         name='nameTwo' 
                                         placeholder='Name' 
                                         onChange={handleNameInputChange} 
@@ -89,7 +110,14 @@ function App() {
                                     />
                                     <span className='checkboxContainer'>
                                         <label className='checkbox' htmlFor="nameTwoCheckbox">
-                                            <input className='checkboxInput' type="checkbox" name='nameTwoCheckbox' id='nameTwoCheckbox'/>
+                                            <input 
+                                                className='checkboxInput' 
+                                                type="checkbox" 
+                                                //Change name below to match one in input to pass checked value to firebase
+                                                name='nameTwoCheckbox' 
+                                                id='nameTwoCheckbox' 
+                                                onChange={handleCheckboxChange} 
+                                            />
                                             <span className="checkmark"></span>
                                         </label>
                                     </span>
@@ -98,6 +126,7 @@ function App() {
                                     <label className='sr-only' htmlFor="nameThree">Name</label>
                                     <input 
                                         type="text" 
+                                        id='nameThree'
                                         name='nameThree' 
                                         placeholder='Name' 
                                         onChange={handleNameInputChange} 
@@ -105,7 +134,7 @@ function App() {
                                     />
                                     <span className='checkboxContainer'>
                                         <label className='checkbox' htmlFor="nameThreeCheckbox">
-                                            <input className='checkboxInput' type="checkbox" name='nameThreeCheckbox' id='nameThreeCheckbox'/>
+                                            <input className='checkboxInput' type="checkbox" name='nameThreeCheckbox' id='nameThreeCheckbox' onChange={handleCheckboxChange}/>
                                             <span className="checkmark"></span>
                                         </label>
                                     </span>
@@ -114,6 +143,7 @@ function App() {
                                     <label className='sr-only' htmlFor="nameFour">Name</label>
                                     <input 
                                         type="text" 
+                                        id='nameFour'
                                         name='nameFour' 
                                         placeholder='Name' 
                                         onChange={handleNameInputChange} 
@@ -121,7 +151,7 @@ function App() {
                                     />
                                     <span className='checkboxContainer'>
                                         <label className='checkbox' htmlFor="nameFourCheckbox">
-                                            <input className='checkboxInput' type="checkbox" name='nameFourCheckbox' id='nameFourCheckbox'/>
+                                            <input className='checkboxInput' type="checkbox" name='nameFourCheckbox' id='nameFourCheckbox' onChange={handleCheckboxChange}/>
                                             <span className="checkmark"></span>
                                         </label>
                                     </span>
