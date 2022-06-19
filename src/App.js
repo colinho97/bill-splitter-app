@@ -52,34 +52,99 @@ function App() {
 
     return (
         <>
-            <Header />
-            <form action="submit">
-                <div className="nameContainer">
-                    <h2>Who's eating tonight?</h2>
-                    <label className='sr-only' htmlFor="name">Name</label>
-                    <input 
-                        type="text" 
-                        name='name' 
-                        placeholder='Name' 
-                        onChange={handleNameInputChange} 
-                        required
-                    />
+            <div className="content">    
+                <div className="wrapper">
+                    <Header />
+                    <form action="submit">
+                        <div className="nameContainer">
+                            <div className="titleText">
+                                <h2>Who's eating tonight?</h2>
+                                <h2>Who paid?</h2>
+                            </div>
+                            <div className="nameInputContainer">
+                                <div className="singleNameInput">
+                                    <label className='sr-only' htmlFor="nameOne">Name</label>
+                                    <input 
+                                        type="text" 
+                                        name='nameOne' 
+                                        placeholder='Name' 
+                                        onChange={handleNameInputChange} 
+                                        required
+                                    />
+                                    <span className='checkboxContainer'>
+                                        <label className='checkbox' htmlFor="nameOneCheckbox">
+                                            <input className='checkboxInput' type="checkbox" name='nameOneCheckbox' id='nameOneCheckbox'/>
+                                            <span className="checkmark"></span>
+                                        </label>
+                                    </span>
+                                </div>
+                                <div className="singleNameInput">
+                                    <label className='sr-only' htmlFor="nameTwo">Name</label>
+                                    <input 
+                                        type="text" 
+                                        name='nameTwo' 
+                                        placeholder='Name' 
+                                        onChange={handleNameInputChange} 
+                                        required
+                                    />
+                                    <span className='checkboxContainer'>
+                                        <label className='checkbox' htmlFor="nameTwoCheckbox">
+                                            <input className='checkboxInput' type="checkbox" name='nameTwoCheckbox' id='nameTwoCheckbox'/>
+                                            <span className="checkmark"></span>
+                                        </label>
+                                    </span>
+                                </div>
+                                <div className="singleNameInput">
+                                    <label className='sr-only' htmlFor="nameThree">Name</label>
+                                    <input 
+                                        type="text" 
+                                        name='nameThree' 
+                                        placeholder='Name' 
+                                        onChange={handleNameInputChange} 
+                                        required
+                                    />
+                                    <span className='checkboxContainer'>
+                                        <label className='checkbox' htmlFor="nameThreeCheckbox">
+                                            <input className='checkboxInput' type="checkbox" name='nameThreeCheckbox' id='nameThreeCheckbox'/>
+                                            <span className="checkmark"></span>
+                                        </label>
+                                    </span>
+                                </div>
+                                <div className="singleNameInput">
+                                    <label className='sr-only' htmlFor="nameFour">Name</label>
+                                    <input 
+                                        type="text" 
+                                        name='nameFour' 
+                                        placeholder='Name' 
+                                        onChange={handleNameInputChange} 
+                                        required
+                                    />
+                                    <span className='checkboxContainer'>
+                                        <label className='checkbox' htmlFor="nameFourCheckbox">
+                                            <input className='checkboxInput' type="checkbox" name='nameFourCheckbox' id='nameFourCheckbox'/>
+                                            <span className="checkmark"></span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="billContainer">
+                            <h2>How much was the bill?</h2>
+                            <label className='sr-only' htmlFor="bill">Bill Amount</label>
+                            <input 
+                                type="number" 
+                                name='bill' 
+                                placeholder='Bill Amount (ie. 100)' 
+                                onChange={handleBillInputChange} 
+                                required
+                            />
+                        </div>
+                        <div className="nextButtonContainer">
+                            <button className="nextButton" onClick={handleSubmit}>Next</button>
+                        </div>
+                    </form>
                 </div>
-                <div className="billContainer">
-                    <h2>How much was the bill?</h2>
-                    <label className='sr-only' htmlFor="bill">Bill Amount</label>
-                    <input 
-                        type="number" 
-                        name='bill' 
-                        placeholder='Bill Amount (ie. 100)' 
-                        onChange={handleBillInputChange} 
-                        required
-                    />
-                </div>
-                <div className="nextButton">
-                    <button onClick={handleSubmit}>Next</button>
-                </div>
-            </form>
+            </div>
         </>
     );
 }
