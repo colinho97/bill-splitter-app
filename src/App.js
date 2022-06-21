@@ -19,7 +19,18 @@ function App() {
     const [nameInput, setNameInput] = useState([]);
     const [billInput, setBillInput] = useState(null);
     const [checked, setChecked] = useState(false);
+    const [diners, setDiners] = useState({
+        nameOne: "",
+        nameTwo: "",
+        nameThree: "",
+        nameFour: "",
+        nameCheckbox: false,
+        bill: 0,
+    })
 
+    useEffect(() => {
+        console.log(diners);
+    }, [diners]);
 
     const handleNameInputChange = (event) => {
         // grab the contents of the box
@@ -35,12 +46,23 @@ function App() {
         console.log(event.target.value);
     }
 
-    const handleCheckboxChange = (event) => {
-        // console.log(event);
-        setChecked(false);
-        console.log(event.target.checked);
-        setChecked(event.target.checked);
+    const handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.type === 'radio' ? target.checked : target.value;
+        const name = target.type === 'radio' ? target.id : target.name;
+
+        console.log(event);
+        setDiners({
+            ...diners,
+            [name]: value
+        });
     }
+
+    // const handleCheckboxChange = (event) => {
+    //     // console.log(event);
+    //     console.log(event.target.checked);
+    //     // setChecked(event.target.checked);
+    // }
 
 
     // create an event listener that will handle the user clicking 'Next'
@@ -51,8 +73,8 @@ function App() {
         const database = getDatabase(firebase);
         const dbRef = ref(database);
         // push the value of userInput state to the database
-        push(dbRef, nameInput);
-        push(dbRef, billInput);
+        push(dbRef, diners);
+        // push(dbRef, billInput);
         // clear the input (reset the state of userInput to an empty string)
         setNameInput('');
         setBillInput(null);
@@ -62,115 +84,141 @@ function App() {
 
     return (
         <>
-            <div className="content">    
+            <div className="content">
                 <div className="wrapper">
                     <Header />
                     <form action="submit">
                         <div className="nameContainer">
-                            <div className="titleText">
-                                <h2>Who's eating tonight?</h2>
-                                <h2>Paid?</h2>
-                            </div>
                             <div className="nameInputContainer">
+                                <div className="titleText">
+                                    <h2>Who's eating tonight?</h2>
+                                </div>
                                 <div className="singleNameInput">
                                     <label className='sr-only' htmlFor="nameOne">Name</label>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         id='nameOne'
-                                        name='nameOne' 
-                                        placeholder='Name' 
-                                        onChange={handleNameInputChange} 
+                                        name='nameOne'
+                                        value={diners.nameOne}
+                                        placeholder='Name'
+                                        onChange={handleInputChange}
                                         required
                                     />
-                                    <span className='checkboxContainer'>
-                                        <label className='checkbox' htmlFor="nameOneCheckbox">
-                                            <input 
-                                                className='checkboxInput' 
-                                                type="checkbox" 
-                                                //Change name below to match one in input to pass checked value to firebase
-                                                name='nameOneCheckbox' 
-                                                id='nameOneCheckbox' 
-                                                // Need to change this checked prop as I cant use same state for name one and two
-                                                checked={checked}
-                                                onChange={handleCheckboxChange} 
-                                            />
-                                            <span className="checkmark"></span>
-                                        </label>
-                                    </span>
+
                                 </div>
                                 <div className="singleNameInput">
                                     <label className='sr-only' htmlFor="nameTwo">Name</label>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         id='nameTwo'
-                                        name='nameTwo' 
-                                        placeholder='Name' 
-                                        onChange={handleNameInputChange} 
+                                        name='nameTwo'
+                                        value={diners.nameTwo}
+                                        placeholder='Name'
+                                        onChange={handleInputChange}
                                         required
                                     />
-                                    <span className='checkboxContainer'>
-                                        <label className='checkbox' htmlFor="nameTwoCheckbox">
-                                            <input 
-                                                className='checkboxInput' 
-                                                type="checkbox" 
-                                                //Change name below to match one in input to pass checked value to firebase
-                                                name='nameTwoCheckbox' 
-                                                id='nameTwoCheckbox' 
-                                                onChange={handleCheckboxChange} 
-                                            />
-                                            <span className="checkmark"></span>
-                                        </label>
-                                    </span>
                                 </div>
                                 <div className="singleNameInput">
                                     <label className='sr-only' htmlFor="nameThree">Name</label>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         id='nameThree'
-                                        name='nameThree' 
-                                        placeholder='Name' 
-                                        onChange={handleNameInputChange} 
+                                        name='nameThree'
+                                        value={diners.nameThree}
+                                        placeholder='Name'
+                                        onChange={handleInputChange}
                                         required
                                     />
-                                    <span className='checkboxContainer'>
-                                        <label className='checkbox' htmlFor="nameThreeCheckbox">
-                                            <input className='checkboxInput' type="checkbox" name='nameThreeCheckbox' id='nameThreeCheckbox' onChange={handleCheckboxChange}/>
-                                            <span className="checkmark"></span>
-                                        </label>
-                                    </span>
+
                                 </div>
                                 <div className="singleNameInput">
                                     <label className='sr-only' htmlFor="nameFour">Name</label>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         id='nameFour'
-                                        name='nameFour' 
-                                        placeholder='Name' 
-                                        onChange={handleNameInputChange} 
+                                        name='nameFour'
+                                        value={diners.nameFour}
+                                        placeholder='Name'
+                                        onChange={handleInputChange}
                                         required
                                     />
-                                    <span className='checkboxContainer'>
-                                        <label className='checkbox' htmlFor="nameFourCheckbox">
-                                            <input className='checkboxInput' type="checkbox" name='nameFourCheckbox' id='nameFourCheckbox' onChange={handleCheckboxChange}/>
-                                            <span className="checkmark"></span>
-                                        </label>
-                                    </span>
                                 </div>
+                            </div>
+                            <div className="nameCheckboxContainer">
+                                <h2>Paid?</h2>
+                                <span className='checkboxContainer'>
+                                    <label className='checkbox' htmlFor="nameOneCheckbox">
+                                        <input
+                                            className='checkboxInput'
+                                            type="radio"
+                                            //Change name below to match one in input to pass checked value to firebase
+                                            name='nameCheckbox'
+                                            value={diners.nameCheckbox}
+                                            id='nameOneCheckbox'
+                                            // Need to change this checked prop as I cant use same state for name one and two
+
+                                            onChange={handleInputChange}
+                                        />
+                                        <span className="checkmark"></span>
+                                    </label>
+                                </span>
+                                <span className='checkboxContainer'>
+                                    <label className='checkbox' htmlFor="nameTwoCheckbox">
+                                        <input
+                                            className='checkboxInput'
+                                            type="radio"
+                                            //Change name below to match one in input to pass checked value to firebase
+                                            name='nameCheckbox'
+                                            value={diners.nameCheckbox}
+                                            id='nameTwoCheckbox'
+                                            onChange={handleInputChange}
+                                        />
+                                        <span className="checkmark"></span>
+                                    </label>
+                                </span>
+                                <span className='checkboxContainer'>
+                                    <label className='checkbox' htmlFor="nameThreeCheckbox">
+                                        <input
+                                            className='checkboxInput'
+                                            type="radio"
+                                            //Change name below to match one in input to pass checked value to firebase
+                                            name='nameCheckbox'
+                                            value={diners.nameCheckbox}
+                                            id='nameThreeCheckbox'
+                                            onChange={handleInputChange}
+                                        />
+                                        <span className="checkmark"></span>
+                                    </label>
+                                </span>
+                                <span className='checkboxContainer'>
+                                    <label className='checkbox' htmlFor="nameFourCheckbox">
+                                        <input
+                                            className='checkboxInput'
+                                            type="radio"
+                                            //Change name below to match one in input to pass checked value to firebase
+                                            name='nameCheckbox'
+                                            value={diners.nameCheckbox}
+                                            id='nameFourCheckbox'
+                                            onChange={handleInputChange}
+                                        />
+                                        <span className="checkmark"></span>
+                                    </label>
+                                </span>
                             </div>
                         </div>
                         <div className="billContainer">
                             <h2>How much was the bill?</h2>
                             <label className='sr-only' htmlFor="bill">Bill Amount</label>
-                            <input 
-                                type="number" 
-                                name='bill' 
-                                placeholder='Bill Amount (ie. 100)' 
-                                onChange={handleBillInputChange} 
+                            <input
+                                type="number"
+                                name='bill'
+                                placeholder='Bill Amount (ie. 100)'
+                                onChange={handleInputChange}
                                 required
                             />
                         </div>
                         <div className="nextButtonContainer">
-                            <button className="nextButton" onClick={handleSubmit}>Next</button>
+                            <button className="nextButton" type="submit" onClick={handleSubmit}>Next</button>
                         </div>
                     </form>
                 </div>

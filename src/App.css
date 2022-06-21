@@ -55,7 +55,7 @@ h2 {
 
 input[type="text"],
 input[type="number"] {
-  width: 80%;
+  width: 90%;
   padding: 1rem 0.7rem;
   background-color: #ffc8dd;
   border: 3px solid white;
@@ -109,18 +109,23 @@ input[type="number"]:focus  {
 /* --------------------------------- */
 
 .nameContainer {
+  display: flex;
   margin-bottom: 4rem;
 }
 
-.titleText {
+.nameCheckboxContainer {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  width: 10%;
 }
 
 .nameInputContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+  width: 90%;
 }
 
 .singleNameInput {
@@ -133,7 +138,8 @@ input[type="number"]:focus  {
   align-self: center;
   display: flex;
   transition: 0.3s;
-  padding-right: 0.6rem;
+  width: 100%;
+  justify-content: center;
 }
 
 .checkbox {
@@ -159,13 +165,6 @@ input[type="number"]:focus  {
   flex-shrink: 0;
 }
 
-/* .checkmark::after {
-  content: '\2714';
-  color: black;
-  font-size: 3rem;
-  text-align: center;
-  display: none;
-} */
 
 .checkboxInput:checked + .checkmark {
   background-color: none;
@@ -180,6 +179,7 @@ input[type="number"]:focus  {
   transition: 0.3s;
   padding-top: 0.1rem;
 }
+
 
 /* --------------------------------- */
 /* Bill Container */
@@ -209,4 +209,4 @@ input[type="number"]:focus  {
 
 /* Button Animations */
 
-https://codepen.io/JackCuthbert/pen/pjZzGE
+/* https://codepen.io/JackCuthbert/pen/pjZzGE */
