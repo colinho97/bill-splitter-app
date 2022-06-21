@@ -12,6 +12,9 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 /* --------------------------------- */
 /* Base setup */
 /* --------------------------------- */
+html {
+  font-size: 125%;
+}
 
 img {
   /* //NOTE this may need to be overwritten in further partials via a width property */
@@ -29,9 +32,22 @@ a {
   display: inline-block;
 }
 
+
 /* --------------------------------- */
 /* Typography */
 /* --------------------------------- */
+
+ul,
+li,
+a,
+input {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
 
 /* Font Kalam Import */
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
@@ -194,6 +210,10 @@ input[type="number"]:focus  {
 /* --------------------------------- */
 
 /* Button Styles */
+.nextButtonContainer {
+  margin-bottom: 3rem;
+}
+
 .nextButton {
   font-family: 'Kalam', cursive;
   padding: 1rem 3rem;
@@ -210,3 +230,22 @@ input[type="number"]:focus  {
 /* Button Animations */
 
 /* https://codepen.io/JackCuthbert/pen/pjZzGE */
+
+
+/* --------------------------------- */
+/* Balances Section*/
+/* --------------------------------- */
+
+
+.splitAmount {
+  color: red;
+}
+
+.nonSplitAmount {
+  color: green;
+}
+
+.splitName {
+  color: black;
+}
+
