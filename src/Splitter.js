@@ -45,7 +45,7 @@ const Splitter = (props) => {
 
     return (
         <>
-            <h2>Balances</h2>
+            <h2 id="balances">Balances</h2>
             <ul>
                 {
                 balances.map((balance) => {
