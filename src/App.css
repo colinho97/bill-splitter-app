@@ -211,7 +211,7 @@ input[type="number"]:focus  {
 
 /* Button Styles */
 .nextButtonContainer {
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
 }
 
 .nextButton {
@@ -249,3 +249,16 @@ input[type="number"]:focus  {
   color: black;
 }
 
+.listOfBalances {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  gap: 1rem;
+}
+
+.balanceItem {
+  border: 3px solid black;
+  border-radius: 0.5rem;
+  flex-basis: 45%;
+  padding: 1rem;
+}
