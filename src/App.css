@@ -1,38 +1,264 @@
-.App {
-  text-align: center;
+/* Setup Snippet */
+/* --------------------------------- */
+html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;} 
+
+
+
+
+/* --------------------------------- */
+/* Base setup */
+/* --------------------------------- */
+html {
+  font-size: 125%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+img {
+  /* //NOTE this may need to be overwritten in further partials via a width property */
+  max-width: 100%;
+  display: block;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.wrapper {
+  max-width: 1260px;
+  width: 70%;
+  margin: 0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+a {
+  display: inline-block;
+}
+
+
+/* --------------------------------- */
+/* Typography */
+/* --------------------------------- */
+
+ul,
+li,
+a,
+input {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Font Kalam Import */
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
+body {
+  font-family: 'Kalam', cursive;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  font-weight: 700;
+  font-size: 3rem;
+  padding-bottom: 3rem;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2 {
+  padding-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 90%;
+  padding: 1rem 0.7rem;
+  background-color: #ffc8dd;
+  border: 3px solid white;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+}
+
+
+input::placeholder {
+  font-family: 'Kalam', cursive;
+  color: black;
+  font-size: 1.4rem;
+}
+
+
+input[type="text"]:hover,
+input[type="number"]:hover {
+  box-shadow: 0.25rem 0.25rem 0.25rem white;
+  display: inline;
+}
+
+.checkbox:hover {
+  box-shadow: 0.25rem 0.25rem 0.25rem white;
+  display: inline;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus  {
+  border: 3px solid #bde0fe;
+  box-shadow: none;
+  outline: none;
+}
+
+/* --------------------------------- */
+/* Background Formatting */
+/* --------------------------------- */
+
+
+
+.content {
+  background-color: #ffafcc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+
+/* --------------------------------- */
+/* Name Container */
+/* --------------------------------- */
+
+.nameContainer {
+  display: flex;
+  margin-bottom: 4rem;
+}
+
+.nameCheckboxContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  width: 10%;
+}
+
+.nameInputContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 90%;
+}
+
+.singleNameInput {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkboxContainer {
+  align-self: center;
+  display: flex;
+  transition: 0.3s;
+  width: 100%;
+  justify-content: center;
+}
+
+.checkbox {
+  align-items: center;
+  position: relative;
+  transition: 0.3s;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.checkboxInput {
+  display: none;
+}
+
+.checkmark {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 3px solid white;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
+.checkboxInput:checked + .checkmark {
+  background-color: none;
+}
+
+.checkboxInput:checked + .checkmark::after {
+  display: inline-block;
+  content: '\2714';
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+  transition: 0.3s;
+  padding-top: 0.1rem;
+}
+
+
+/* --------------------------------- */
+/* Bill Container */
+/* --------------------------------- */
+
+.billContainer {
+  margin-bottom: 4rem;
+}
+
+/* --------------------------------- */
+/* Next Button*/
+/* --------------------------------- */
+
+/* Button Styles */
+.nextButtonContainer {
+  margin-bottom: 5rem;
+}
+
+.nextButton {
+  font-family: 'Kalam', cursive;
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+  position: relative;
+  font-size: 1.4rem;
+  transition: 0.3s;
+  outline: none;
+  border-radius: 0.5rem;
+  border: 3px solid transparent;
+  cursor: pointer;
+}
+
+/* Button Animations */
+
+/* https://codepen.io/JackCuthbert/pen/pjZzGE */
+
+
+/* --------------------------------- */
+/* Balances Section*/
+/* --------------------------------- */
+
+
+.splitAmount {
+  color: red;
+}
+
+.nonSplitAmount {
+  color: green;
+}
+
+.splitName {
+  color: black;
+}
+
+.listOfBalances {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  gap: 1rem;
+}
+
+.balanceItem {
+  border: 3px solid black;
+  border-radius: 0.5rem;
+  flex-basis: 45%;
+  padding: 1rem;
 }
